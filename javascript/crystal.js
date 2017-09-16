@@ -1,9 +1,4 @@
 
-//******* VARIABLES *******//
-
-//Random number that will be generated to match
-//Computer assigns random number between 19 - 120
-
 startGame ();
 
 function startGame() {
@@ -13,10 +8,13 @@ var winCount = "";
 //varible to hold loss count
 var lossCount = "";
 
+//variable for player score
 var playerScore = 0;
 
 
 //************
+//Random number that will be generated to match
+//Computer assigns random number between 19 - 120
 var randomWinNumber = Math.floor((Math.random() * (120 - 19 + 1) + 19));
 document.getElementById("randomNumberBox").innerHTML = randomWinNumber;
 
@@ -30,7 +28,7 @@ var crystal4 = Math.floor(Math.random() * 12) + 1;
 
 
 
-//Function for clicks
+//Crystal click function
 
 crystalClicked();
 
