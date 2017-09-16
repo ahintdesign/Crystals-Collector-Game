@@ -1,38 +1,66 @@
 
-startGame ();
+var winCount;
+var lossCount;
+var playerScore;
 
-function startGame() {
+
+function initGame() {
 //variable to hold win count
-var winCount = "";
+winCount = 0;
 
 //varible to hold loss count
-var lossCount = "";
+lossCount = 0;
 
 //variable for player score
-var playerScore = 0;
+playerScore = 0;
+$("#playerScore").html("0");
 
 
+}
+
+
+
+
+
+function startGame() {
+console.log("startGame was called");    
+initGame();
+goal();
+populateCrystals();
+console.log(document.getElementById("playerScore").innerHTML);
+
+}//startGame function
+
+var randomWinNumber;
+
+function goal() {
 //************
 //Random number that will be generated to match
 //Computer assigns random number between 19 - 120
-var randomWinNumber = Math.floor((Math.random() * (120 - 19 + 1) + 19));
+randomWinNumber = Math.floor((Math.random() * (120 - 19 + 1) + 19));
 document.getElementById("randomNumberBox").innerHTML = randomWinNumber;
+}
 
+var crystal1;
+var crystal2;
+var crystal3;
+var crystal4;
 
+function populateCrystals () {
 //**********Assign each crystal a random number between 1 - 12
 
-var crystal1 = Math.floor(Math.random() * 12) + 1;
-var crystal2 = Math.floor(Math.random() * 12) + 1;
-var crystal3 = Math.floor(Math.random() * 12) + 1;
-var crystal4 = Math.floor(Math.random() * 12) + 1;
-
+crystal1 = Math.floor(Math.random() * 12) + 1;
+crystal2 = Math.floor(Math.random() * 12) + 1;
+crystal3 = Math.floor(Math.random() * 12) + 1;
+crystal4 = Math.floor(Math.random() * 12) + 1;
+}
 
 
 //Crystal click function
 
-crystalClicked();
 
-function crystalClicked() {
+
+
     $("#crystal1").on("click", function() {
         playerScore += crystal1;
         $("#playerScore").html(playerScore);
@@ -64,7 +92,7 @@ function crystalClicked() {
     });
 
 
-}
+
 
 
 //Function to check the player score
@@ -73,7 +101,6 @@ function outcome() {
     if (playerScore == randomWinNumber) {
         alert("AWESOME! You win!!");
         winCount++;
-        $("#playerScore").empty();
         $("#winCount").html(winCount);
         startGame();
        
@@ -81,14 +108,13 @@ function outcome() {
         alert("Oh no, you went over! You lose :-(");
         lossCount++;
         $("#lossCount").html(lossCount);
-        $("#playerScore").empty();
         startGame();
 
     }
   }
-}
 
 
+startGame ();
 
 
 
